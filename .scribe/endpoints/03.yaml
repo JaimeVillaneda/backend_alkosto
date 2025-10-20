@@ -1,0 +1,596 @@
+name: Categorías
+description: |-
+
+  Endpoints para la gestión de categorías dentro del sistema.
+  Permite listar, crear, actualizar, eliminar, restaurar y consultar el árbol jerárquico de categorías.
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/categories
+    metadata:
+      groupName: Categorías
+      groupDescription: |-
+
+        Endpoints para la gestión de categorías dentro del sistema.
+        Permite listar, crear, actualizar, eliminar, restaurar y consultar el árbol jerárquico de categorías.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Listar categorías'
+      description: |-
+        Obtiene una lista paginada de las categorías registradas en el sistema.
+        Se pueden aplicar filtros, búsqueda y ordenamiento.
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      is_active:
+        name: is_active
+        description: 'Opcional. Filtra por estado activo/inactivo. Ejemplo: true'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      parent_id:
+        name: parent_id
+        description: 'Opcional. Filtra por categoría padre. Ejemplo: 1'
+        required: false
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      search:
+        name: search
+        description: 'Opcional. Busca por nombre o descripción. Ejemplo: "Electrónica"'
+        required: false
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      sort_field:
+        name: sort_field
+        description: 'Campo por el cual ordenar. Por defecto: created_at'
+        required: false
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      sort_direction:
+        name: sort_direction
+        description: 'Dirección del ordenamiento ("asc" o "desc"). Por defecto: desc'
+        required: false
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: 'Cantidad de registros por página. Por defecto: 15'
+        required: false
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      is_active: false
+      parent_id: 17
+      search: consequatur
+      sort_field: consequatur
+      sort_direction: consequatur
+      per_page: 17
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "data": [
+                {
+                  "id": 1,
+                  "name": "Electrónica",
+                  "slug": "electronica",
+                  "description": "Artículos de tecnología y gadgets",
+                  "is_active": true,
+                  "parent_id": null
+                }
+              ]
+            },
+            "message": "Categorías obtenidas exitosamente."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/categories
+    metadata:
+      groupName: Categorías
+      groupDescription: |-
+
+        Endpoints para la gestión de categorías dentro del sistema.
+        Permite listar, crear, actualizar, eliminar, restaurar y consultar el árbol jerárquico de categorías.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Crear una nueva categoría'
+      description: 'Registra una nueva categoría en el sistema.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'requerido Nombre de la categoría. Ejemplo: "Electrónica"'
+        required: false
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      description:
+        name: description
+        description: 'Descripción de la categoría. Ejemplo: "Artículos tecnológicos"'
+        required: false
+        example: 'Dolores dolorum amet iste laborum eius est dolor.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      is_active:
+        name: is_active
+        description: 'Estado de la categoría. Por defecto: true'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      parent_id:
+        name: parent_id
+        description: 'ID de la categoría padre. Puede ser null.'
+        required: false
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: consequatur
+      description: 'Dolores dolorum amet iste laborum eius est dolor.'
+      is_active: false
+      parent_id: 17
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "id": 1,
+              "name": "Electrónica",
+              "description": "Artículos tecnológicos"
+            },
+            "message": "Categoría creada exitosamente."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/categories/{category_id}'
+    metadata:
+      groupName: Categorías
+      groupDescription: |-
+
+        Endpoints para la gestión de categorías dentro del sistema.
+        Permite listar, crear, actualizar, eliminar, restaurar y consultar el árbol jerárquico de categorías.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Obtener una categoría específica'
+      description: 'Muestra los detalles de una categoría identificada por su ID.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      category_id:
+        name: category_id
+        description: 'The ID of the category.'
+        required: true
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      id:
+        name: id
+        description: 'requerido ID de la categoría. Ejemplo: 5'
+        required: false
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      category_id: 17
+      id: 17
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "id": 5,
+              "name": "Accesorios",
+              "description": "Artículos complementarios"
+            },
+            "message": "Categoría obtenida exitosamente."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/categories/{category_id}'
+    metadata:
+      groupName: Categorías
+      groupDescription: |-
+
+        Endpoints para la gestión de categorías dentro del sistema.
+        Permite listar, crear, actualizar, eliminar, restaurar y consultar el árbol jerárquico de categorías.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Actualizar una categoría'
+      description: 'Modifica los datos de una categoría existente.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      category_id:
+        name: category_id
+        description: 'The ID of the category.'
+        required: true
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      id:
+        name: id
+        description: 'requerido ID de la categoría. Ejemplo: 2'
+        required: false
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      category_id: 17
+      id: 17
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'requerido Nuevo nombre de la categoría. Ejemplo: "Audio y Sonido"'
+        required: false
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      description:
+        name: description
+        description: 'Nueva descripción. Ejemplo: "Equipos de audio profesional"'
+        required: false
+        example: 'Dolores dolorum amet iste laborum eius est dolor.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      is_active:
+        name: is_active
+        description: 'Estado de la categoría.'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      parent_id:
+        name: parent_id
+        description: 'The <code>id</code> of an existing record in the categories table.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: consequatur
+      description: 'Dolores dolorum amet iste laborum eius est dolor.'
+      is_active: false
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "id": 2,
+              "name": "Audio y Sonido"
+            },
+            "message": "Categoría actualizada exitosamente."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/categories/{category_id}'
+    metadata:
+      groupName: Categorías
+      groupDescription: |-
+
+        Endpoints para la gestión de categorías dentro del sistema.
+        Permite listar, crear, actualizar, eliminar, restaurar y consultar el árbol jerárquico de categorías.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Eliminar una categoría'
+      description: |-
+        Elimina una categoría del sistema (soft delete).
+        No se permite eliminar una categoría que tenga subcategorías asociadas.
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      category_id:
+        name: category_id
+        description: 'The ID of the category.'
+        required: true
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      id:
+        name: id
+        description: 'requerido ID de la categoría. Ejemplo: 3'
+        required: false
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      category_id: 17
+      id: 17
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Categoría eliminada exitosamente."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "No se puede eliminar la categoría porque tiene subcategorías asociadas."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/categories-tree
+    metadata:
+      groupName: Categorías
+      groupDescription: |-
+
+        Endpoints para la gestión de categorías dentro del sistema.
+        Permite listar, crear, actualizar, eliminar, restaurar y consultar el árbol jerárquico de categorías.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Obtener árbol de categorías'
+      description: 'Devuelve la estructura jerárquica completa de las categorías activas.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": [
+              {
+                "id": 1,
+                "name": "Electrónica",
+                "children": [
+                  {
+                    "id": 2,
+                    "name": "Teléfonos"
+                  }
+                ]
+              }
+            ],
+            "message": "Árbol de categorías obtenido exitosamente."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/categories/{id}/restore'
+    metadata:
+      groupName: Categorías
+      groupDescription: |-
+
+        Endpoints para la gestión de categorías dentro del sistema.
+        Permite listar, crear, actualizar, eliminar, restaurar y consultar el árbol jerárquico de categorías.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Restaurar una categoría eliminada'
+      description: 'Restaura una categoría previamente eliminada (soft delete).'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'requerido ID de la categoría a restaurar. Ejemplo: 4'
+        required: false
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 17
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Categoría restaurada exitosamente."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

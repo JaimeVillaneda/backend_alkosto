@@ -1,0 +1,134 @@
+name: Autenticación
+description: |-
+
+  Endpoints para el manejo de autenticación de usuarios.
+  Permite iniciar y cerrar sesión en el sistema.
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/login
+    metadata:
+      groupName: Autenticación
+      groupDescription: |-
+
+        Endpoints para el manejo de autenticación de usuarios.
+        Permite iniciar y cerrar sesión en el sistema.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Iniciar sesión'
+      description: 'Autentica a un usuario en el sistema y genera un token de acceso.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'requerido Email del usuario. Ejemplo: usuario@ejemplo.com'
+        required: false
+        example: qkunze@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'requerido Contraseña del usuario. Ejemplo: password123'
+        required: false
+        example: 'O[2UZ5ij-e/dl4m{o,'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: qkunze@example.com
+      password: 'O[2UZ5ij-e/dl4m{o,'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "user": {
+              "id": 1,
+              "name": "Juan Pérez",
+              "email": "usuario@ejemplo.com"
+            },
+            "token": "1|abcdef123456",
+            "message": "Login exitoso"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "message": "Las credenciales proporcionadas son incorrectas.",
+            "errors": {
+              "email": ["Las credenciales proporcionadas son incorrectas."]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/logout
+    metadata:
+      groupName: Autenticación
+      groupDescription: |-
+
+        Endpoints para el manejo de autenticación de usuarios.
+        Permite iniciar y cerrar sesión en el sistema.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Cerrar sesión'
+      description: 'Revoca el token de acceso actual del usuario.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Logout exitoso"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

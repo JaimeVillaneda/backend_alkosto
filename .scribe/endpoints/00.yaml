@@ -1,0 +1,160 @@
+name: 'Registro de Usuarios'
+description: |-
+
+  Endpoints para el registro y verificación de cuentas de usuario.
+  Permite crear nuevas cuentas y verificar las existentes.
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/register
+    metadata:
+      groupName: 'Registro de Usuarios'
+      groupDescription: |-
+
+        Endpoints para el registro y verificación de cuentas de usuario.
+        Permite crear nuevas cuentas y verificar las existentes.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Registrar usuario'
+      description: 'Crea una nueva cuenta de usuario en el sistema.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'requerido Nombre completo del usuario. Ejemplo: "Juan Pérez"'
+        required: false
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: 'requerido Email único del usuario. Ejemplo: "usuario@ejemplo.com"'
+        required: false
+        example: qkunze@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'requerido Contraseña (mínimo 8 caracteres). Ejemplo: "password123"'
+        required: false
+        example: 'O[2UZ5ij-e/dl4m{o,'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: 'requerido Confirmación de la contraseña. Ejemplo: "password123"'
+        required: false
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: consequatur
+      email: qkunze@example.com
+      password: 'O[2UZ5ij-e/dl4m{o,'
+      password_confirmation: consequatur
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "success": true,
+            "user": {
+              "id": 1,
+              "name": "Juan Pérez",
+              "email": "usuario@ejemplo.com",
+              "updated_at": "2023-01-01T12:00:00.000000Z",
+              "created_at": "2023-01-01T12:00:00.000000Z"
+            },
+            "token": "1|abcdef123456",
+            "message": "Usuario registrado exitosamente"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "message": "El email ya ha sido tomado.",
+            "errors": {
+              "email": ["El email ya ha sido tomado."]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/verify-account
+    metadata:
+      groupName: 'Registro de Usuarios'
+      groupDescription: |-
+
+        Endpoints para el registro y verificación de cuentas de usuario.
+        Permite crear nuevas cuentas y verificar las existentes.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Verificar cuenta'
+      description: |-
+        Endpoint para la verificación de cuentas de usuario.
+        Nota: Esta funcionalidad puede ser implementada según los requisitos específicos.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Cuenta verificada exitosamente"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
