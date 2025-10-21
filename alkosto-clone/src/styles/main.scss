@@ -1,0 +1,31 @@
+// Variables de colores y estilos
+$primary-color: #e95e27;
+$secondary-color: #0C65C8;
+$text-color: #333;
+$background-color: #fff;
+
+// Reset y estilos base
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  color: $text-color;
+  line-height: 1.6;
+}
+
+// Mixins para responsive design
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}

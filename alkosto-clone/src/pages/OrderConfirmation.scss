@@ -1,0 +1,29 @@
+.order-confirmation {
+  text-align: center;
+  padding: 60px 20px;
+
+  h1 {
+    color: #28a745;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .back-home {
+    display: inline-block;
+    margin-top: 20px;
+    background: #e95e27;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover {
+      background: #d35400;
+    }
+  }
+}
