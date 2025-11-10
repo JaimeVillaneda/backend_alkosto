@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CategoryController;
-
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -52,4 +52,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/categories/{category}', [CategoryController::class, 'destroy']);
     Route::get('/categories-tree', [CategoryController::class, 'tree']);
     Route::post('/categories/{id}/restore', [CategoryController::class, 'restore']);
+
+
+    // Products
+    Route::get('/products', [ProductController::class, 'index']);
+    Route::post('/products', [ProductController::class, 'store']);
+    Route::get('/products/{product}', [ProductController::class, 'show']);
+    Route::put('/products/{product}', [ProductController::class, 'update']);
+    Route::delete('/products/{product}', [ProductController::class, 'destroy']);
+    Route::get('/products-low-stock', [ProductController::class, 'lowStock']);
+    Route::post('/products/{id}/restore', [ProductController::class, 'restore']);
 });
