@@ -62,4 +62,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/products/{product}', [ProductController::class, 'destroy']);
     Route::get('/products-low-stock', [ProductController::class, 'lowStock']);
     Route::post('/products/{id}/restore', [ProductController::class, 'restore']);
+
+    // Carrito de compras
+    Route::get('/cart', [CartController::class, 'index']);
+    Route::post('/cart', [CartController::class, 'store']);
+    Route::put('/cart/{cart}', [CartController::class, 'update']);
+    Route::delete('/cart/{cart}', [CartController::class, 'destroy']);
+    Route::delete('/cart', [CartController::class, 'clear']);
+
+
 });
